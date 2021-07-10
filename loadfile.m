@@ -1,6 +1,12 @@
-%filename = '2021-04-28 21-54-48.txt'
-filename = '2021-04-29 22-03-49.txt'
-%filename = '2021-05-21 13-25-47.txt'
+%filename = '2021-04-29 22-03-49.txt'
+%filename = '2021-06-23 22-04-53_basketball.txt'
+%filename = '2021-06-23 22-00-09_walk.txt'
+%filename = '2021-06-23 22-07-19_mouse.txt'
+%filename = '2021-06-23 22-19-19_eat.txt'
+%filename = '2021-06-23 22-22-19_raquet.txt'
+%filename = '2021-06-23 22-28-31_tap.txt'
+%filename = '2021-06-23 22-30-16_walk.txt'
+filename = '2021-06-23 22-34-40_run.txt'
 data = load(filename);
 [r,c] = size(data);
 d = data(:,:);
@@ -13,7 +19,6 @@ heading = d(:,21:22);
 apr = d(:,23:25);
 gyro_apr = d(:,26:28);
 tstamp = d(:,29);
-dt = 180000000;
 
 mag_t1 = mag(1,:);
 nl_1 = mag_t1.';
@@ -119,24 +124,27 @@ for i = 1:r
 end
 
 
-figure('Name','time-x(1)','NumberTitle','off')
-plot(arrGyro(:,4),arrGyro(:,1),'-.go')
-hold on
-plot(arrMag(:,4),arrMag(:,1),'-.b*')
-hold on
-plot(arrMuse(:,4),arrMuse(:,1),':ms')
-
-figure('Name','x-y(1)','NumberTitle','off')
-plot(arrGyro(:,2),arrGyro(:,1),'-.go')
-hold on
-plot(arrMag(:,2),arrMag(:,1),'-.b*')
-hold on
-plot(arrMuse(:,2),arrMuse(:,1),':ms')
+% figure('Name','time-x(1)','NumberTitle','off')
+% plot(arrGyro(:,4),arrGyro(:,1),'-.go')
+% hold on
+% plot(arrMag(:,4),arrMag(:,1),'-.b*')
+% hold on
+% plot(arrMuse(:,4),arrMuse(:,1),':ms')
+% legend('Gyro','Mag','Muse')
+% 
+% figure('Name','x-y(1)','NumberTitle','off')
+% plot(arrGyro(:,2),arrGyro(:,1),'-.go')
+% hold on
+% plot(arrMag(:,2),arrMag(:,1),'-.b*')
+% hold on
+% plot(arrMuse(:,2),arrMuse(:,1),':ms')
+% legend('Gyro','Mag','Muse')
 
 figure('Name','time-error(1)','NumberTitle','off')
 plot(arrGyro(:,4),arrGyro(:,5),'-.go')
 hold on
 plot(arrMuse(:,4),arrMuse(:,5),':ms')
+legend('Gyro','Muse')
 
 figure('Name','x-y-z(1)','NumberTitle','off')
 plot3(arrGyro(:,3),arrGyro(:,2),arrGyro(:,1),'-.go')
@@ -144,52 +152,59 @@ hold on
 plot3(arrMag(:,3),arrMag(:,2),arrMag(:,1),'-.b*')
 hold on
 plot3(arrMuse(:,3),arrMuse(:,2),arrMuse(:,1),':ms')
-
-% figure('Name','time-museErrType(1)','NumberTitle','off')
-% plot(tstamp(:),type(:)*5,'-.go')
+legend('Gyro','Mag','Muse')
+% 
+% % figure('Name','time-museErrType(1)','NumberTitle','off')
+% % plot(tstamp(:),type(:)*5,'-.go')
+% % hold on
+% % plot(arrMuse(:,4),arrMuse(:,5),':ms')
+% 
+% 
+% 
+% figure('Name','time-x(2)','NumberTitle','off')
+% plot(arrGyro2(:,4),arrGyro2(:,1),'-.co')
 % hold on
-% plot(arrMuse(:,4),arrMuse(:,5),':ms')
+% plot(arrMag(:,4),arrMag(:,1),'-.b*')
+% hold on
+% plot(arrMuse2(:,4),arrMuse2(:,1),':ms')
+% legend('Gyro2','Mag','Muse2')
+% 
+% figure('Name','x-y(2)','NumberTitle','off')
+% plot(arrGyro2(:,2),arrGyro2(:,1),'-.co')
+% hold on
+% plot(arrMag(:,2),arrMag(:,1),'-.b*')
+% hold on
+% plot(arrMuse2(:,2),arrMuse2(:,1),':ms')
+% legend('Gyro2','Mag','Muse2')
 
-
-
-figure('Name','time-x(2)','NumberTitle','off')
-plot(arrGyro2(:,4),arrGyro2(:,1),'-.co')
-hold on
-plot(arrMag(:,4),arrMag(:,1),'-.b*')
-hold on
-plot(arrMuse2(:,4),arrMuse2(:,1),':ms')
-
-figure('Name','x-y(2)','NumberTitle','off')
-plot(arrGyro2(:,2),arrGyro2(:,1),'-.co')
-hold on
-plot(arrMag(:,2),arrMag(:,1),'-.b*')
-hold on
-plot(arrMuse2(:,2),arrMuse2(:,1),':ms')
-
-figure('Name','time-error(2)','NumberTitle','off')
-plot(arrGyro2(:,4),arrGyro2(:,5),'-.co')
-hold on
-plot(arrMuse2(:,4),arrMuse2(:,5),':ms')
-
-figure('Name','x-y-z(2)','NumberTitle','off')
-plot3(arrGyro2(:,3),arrGyro2(:,2),arrGyro2(:,1),'-.co')
-hold on
-plot3(arrMag(:,3),arrMag(:,2),arrMag(:,1),'-.b*')
-hold on
-plot3(arrMuse2(:,3),arrMuse2(:,2),arrMuse2(:,1),':ms')
-
-
-% figure('Name','time-museErrType(2)','NumberTitle','off')
-% plot(tstamp(:),type(:)*5,'-.co')
+% figure('Name','time-error(2)','NumberTitle','off')
+% plot(arrGyro2(:,4),arrGyro2(:,5),'-.co')
 % hold on
 % plot(arrMuse2(:,4),arrMuse2(:,5),':ms')
+% legend('Gyro2','Muse2')
 
-figure('Name','time-errorGyro(1&2)','NumberTitle','off')
-plot(arrGyro(:,4),arrGyro(:,5),'-.go')
-hold on
-plot(arrGyro2(:,4),arrGyro2(:,5),'-.co')
-
-figure('Name','time-errorMuse(1&2)','NumberTitle','off')
-plot(arrMuse(:,4),arrMuse(:,5),':ms')
-hold on
-plot(arrMuse2(:,4),arrMuse2(:,5),':bs')
+% figure('Name','x-y-z(2)','NumberTitle','off')
+% plot3(arrGyro2(:,3),arrGyro2(:,2),arrGyro2(:,1),'-.co')
+% hold on
+% plot3(arrMag(:,3),arrMag(:,2),arrMag(:,1),'-.b*')
+% hold on
+% plot3(arrMuse2(:,3),arrMuse2(:,2),arrMuse2(:,1),':ms')
+% legend('Gyro2','Mag','Muse2')
+% 
+% 
+% % figure('Name','time-museErrType(2)','NumberTitle','off')
+% % plot(tstamp(:),type(:)*5,'-.co')
+% % hold on
+% % plot(arrMuse2(:,4),arrMuse2(:,5),':ms')
+% 
+% figure('Name','time-errorGyro(1&2)','NumberTitle','off')
+% plot(arrGyro(:,4),arrGyro(:,5),'-.go')
+% hold on
+% plot(arrGyro2(:,4),arrGyro2(:,5),'-.co')
+% legend('Gyro','Gyro2')
+% 
+% figure('Name','time-errorMuse(1&2)','NumberTitle','off')
+% plot(arrMuse(:,4),arrMuse(:,5),':ms')
+% hold on
+% plot(arrMuse2(:,4),arrMuse2(:,5),':bs')
+% legend('Muse','Muse2')
